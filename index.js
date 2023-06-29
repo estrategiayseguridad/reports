@@ -27,7 +27,7 @@ const summaryMWB = (async function () {
             printBackground: true,
         });
 
-        console.log("report created")
+        console.log("Summary MWB Created")
 
         await browser.close();
 
@@ -61,7 +61,7 @@ const practicas_MWB_ESP = (async function() {
             printBackground: true,
         });
 
-        console.log("report created")
+        console.log("Practices MWB ESP Created")
 
         await browser.close();
 
@@ -95,7 +95,7 @@ const practices_MWB_ENG = (async function() {
             printBackground: true,
         });
 
-        console.log("report created")
+        console.log("Practices MWB ENG Created")
 
         await browser.close();
 
@@ -129,7 +129,7 @@ const summaryCloudflare = (async function() {
             printBackground: true,
         });
 
-        console.log("report created")
+        console.log("Summary Cloudflare Created")
 
         await browser.close();
 
