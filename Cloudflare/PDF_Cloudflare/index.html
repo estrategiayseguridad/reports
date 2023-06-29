@@ -189,7 +189,7 @@
     <!-- PORTADA -->
 
     <div>
-        <img src="./img/portada.jpg" alt="portada" class="portada">
+        <img src="./img/portada.png" alt="portada" class="portada">
     </div>
 
     <div> <br> </div>
@@ -500,11 +500,16 @@
                     color: '#ffffff'
                 },
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
                 },
                 hAxis: {
                     textStyle: {
@@ -518,7 +523,8 @@
                 },
                 legend: {
                     textStyle: {
-                        color: '#ffffff'
+                        color: '#ffffff',
+                        fontSize: 18
                     },
                     position: 'bottom'
                 },
@@ -531,10 +537,10 @@
             // Insights de trafico en graficos de barras horizontales
             // Source device types
             var data = google.visualization.arrayToDataTable([
-                ["Device", "Traffic", { role: "style" }],
-                ["Mobile", 352000000, "#124D85"],
-                ["Desktop", 189600000, "#124D85"],
-                ["Tablet", 1090000, "#124D85"]
+                ["Device", "Traffic"],
+                ["Mobile", 352000000],
+                ["Desktop", 189600000],
+                ["Tablet", 1090000]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -544,19 +550,24 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Source device types",
                 width: 600,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '70%',
+                    height: '70%'
                 },
                 hAxis: {
                     textStyle: {
@@ -568,20 +579,27 @@
                         color: '#ffffff'
                     }
                 },
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
+                colors: ['#D66D32'],
+                bar: {
+                    groupWidth: "75%",
+                },
+                legend: {
+                    position: "none"
+                },
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartDevice"));
             chart.draw(view, options);
 
+
             // Edge status codes
             var data = google.visualization.arrayToDataTable([
-                ["Status", "Traffic", { role: "style" }],
-                ["200 OK", 398040000, "#124D85"],
-                ["304 Not Modified", 130910000, "#124D85"],
-                ["204 No Content", 12310000, "#124D85"],
-                ["302 Found", 5360000, "#124D85"],
-                ["399 Client Closed Request", 2000000, "#124D85"]
+                ["Status", "Traffic"],
+                ["200 OK", 398040000],
+                ["304 Not Modified", 130910000],
+                ["204 No Content", 12310000],
+                ["302 Found", 5360000],
+                ["399 Client Closed Request", 2000000]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -591,19 +609,24 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Edge status codes",
                 width: 600,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '70%',
+                    height: '70%'
                 },
                 hAxis: {
                     textStyle: {
@@ -615,20 +638,27 @@
                         color: '#ffffff'
                     }
                 },
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
+                colors: ['#D66D32'],
+                bar: {
+                    groupWidth: "75%",
+                },
+                legend: {
+                    position: "none"
+                },
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartCodes"));
             chart.draw(view, options);
 
+
             // Source IPs
             var data = google.visualization.arrayToDataTable([
-                ["IPs", "Traffic", { role: "style" }],
-                ["13.89.246.91", 2540000, "#124D85"],
-                ["190.56.85.250", 2530000, "#124D85"],
-                ["190.111.2.18", 640200, "#124D85"],
-                ["45.5.117.93", 606890, "#124D85"],
-                ["205.211.224.234", 593420, "#124D85"]
+                ["IPs", "Traffic"],
+                ["13.89.246.91", 2540000],
+                ["190.56.85.250", 2530000],
+                ["190.111.2.18", 640200],
+                ["45.5.117.93", 606890],
+                ["205.211.224.234", 593420]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -638,19 +668,24 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Source IPs",
                 width: 600,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '70%',
+                    height: '70%'
                 },
                 hAxis: {
                     textStyle: {
@@ -662,20 +697,27 @@
                         color: '#ffffff'
                     }
                 },
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
+                colors: ['#D66D32'],
+                bar: {
+                    groupWidth: "75%",
+                },
+                legend: {
+                    position: "none"
+                },
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartSource"));
             chart.draw(view, options);
 
+
             // Cache statuses
             var data = google.visualization.arrayToDataTable([
-                ["Cache", "Traffic", { role: "style" }],
-                ["Dynamic", 522530000, "#124D85"],
-                ["None", 16970000, "#124D85"],
-                ["Hit", 1670000, "#124D85"],
-                ["Miss", 1480000, "#124D85"],
-                ["Expired", 21360, "#124D85"]
+                ["Cache", "Traffic"],
+                ["Dynamic", 522530000],
+                ["None", 16970000],
+                ["Hit", 1670000],
+                ["Miss", 1480000],
+                ["Expired", 21360]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -685,15 +727,20 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Cache Stauses",
                 width: 600,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
+                },
+                chartArea: {
+                    width: '70%',
+                    height: '70%'
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
@@ -709,11 +756,14 @@
                         color: '#ffffff'
                     }
                 },
+                colors: ['#D66D32'],
                 bar: { groupWidth: "75%" },
                 legend: { position: "none" },
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartCache"));
             chart.draw(view, options);
+
 
             // Seguridad
             // Grafica de lineas firewall events
@@ -741,11 +791,16 @@
                 width: 1150,
                 height: 500,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
                 },
                 hAxis: {
                     textStyle: {
@@ -759,7 +814,8 @@
                 },
                 legend: {
                     textStyle: {
-                        color: '#ffffff'
+                        color: '#ffffff',
+                        fontSize: 18
                     },
                     position: 'bottom'
                 },
@@ -779,9 +835,10 @@
             var options = {
                 title: 'Events by service',
                 width: 1150,
-                height: 200,
+                height: 300,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
@@ -792,6 +849,10 @@
                         color: '#ffffff'
                     }
                 },
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
+                },
                 vAxis: {
                     textStyle: {
                         color: '#ffffff'
@@ -799,7 +860,8 @@
                 },
                 legend: {
                     textStyle: {
-                        color: '#ffffff'
+                        color: '#ffffff',
+                        fontSize: 18
                     },
                     position: 'bottom'
                 },
@@ -813,12 +875,12 @@
             //Insights Seguridad, graficos de barras
             // Hosts
             var data = google.visualization.arrayToDataTable([
-                ["Hosts", "Alerts", { role: "style" }],
-                ["bvnegocios.banrural.com.gt", 882910000, "#124D85"],
-                ["bancamovil.banrural.com.gt", 304710000, "#124D85"],
-                ["rrhh.banrural.com.gt", 5290000, "#124D85"],
-                ["apitc.banrural.com.gt", 809010, "#124D85"],
-                ["portaltc.banrural.com.gt", 272710, "#124D85"]
+                ["Hosts", "Alerts"],
+                ["bvnegocios.banrural.com.gt", 882910000],
+                ["bancamovil.banrural.com.gt", 304710000],
+                ["rrhh.banrural.com.gt", 5290000],
+                ["apitc.banrural.com.gt", 809010],
+                ["portaltc.banrural.com.gt", 272710]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -828,19 +890,24 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Host",
                 width: 600,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '70%',
+                    height: '70%'
                 },
                 hAxis: {
                     textStyle: {
@@ -852,20 +919,26 @@
                         color: '#ffffff'
                     }
                 },
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
+                colors: ['#D66D32'],
+                bar: {
+                    groupWidth: "75%"
+                },
+                legend: {
+                    position: "none"
+                }
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartHosts"));
             chart.draw(view, options);
 
             // Firewall rules
             var data = google.visualization.arrayToDataTable([
-                ["Rules", "Alerts", { role: "style" }],
-                ["Log_BDR", 529570000, "#124D85"],
-                ["File_Load_BVNegocios_transfers", 217630000, "#124D85"],
-                ["Bot Verified", 4570000, "#124D85"],
-                ["Lista_Blanca_APP", 972100, "#124D85"],
-                ["Bot_30", 290310000, "#124D85"]
+                ["Rules", "Alerts"],
+                ["Log_BDR", 529570000],
+                ["File_Load_BVNegocios_transfers", 217630000],
+                ["Bot Verified", 4570000],
+                ["Lista_Blanca_APP", 972100],
+                ["Bot_30", 290310000]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -875,15 +948,20 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Firewall rules",
                 width: 600,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
+                },
+                chartArea: {
+                    width: '70%',
+                    height: '70%'
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
@@ -899,20 +977,27 @@
                         color: '#ffffff'
                     }
                 },
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
+                colors: ['#D66D32'],
+                bar: {
+                    groupWidth: "75%"
+                },
+                legend: {
+                    position: "none"
+                }
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartFirewall"));
             chart.draw(view, options);
 
+
             // Managed rules
             var data = google.visualization.arrayToDataTable([
-                ["Rules", "Alerts", { role: "style" }],
-                ["corp_upload", 217600000, "#124D85"],
-                ["Corpo_upload_OWASP", 217600000, "#124D85"],
-                ["rrhh exception", 1970000, "#124D85"],
-                ["BancaSat", 1780000, "#124D85"],
-                ["949110: Inbound Anomaly Score Exceeded", 94590000, "#124D85"]
+                ["Rules", "Alerts"],
+                ["corp_upload", 217600000],
+                ["Corpo_upload_OWASP", 217600000],
+                ["rrhh exception", 1970000],
+                ["BancaSat", 1780000],
+                ["949110: Inbound Anomaly Score Exceeded", 94590000]
             ]);
 
             var view = new google.visualization.DataView(data);
@@ -922,19 +1007,24 @@
                     sourceColumn: 1,
                     type: "string",
                     role: "annotation"
-                },
-                2]);
+                }
+            ]);
 
             var options = {
                 title: "Managed rules",
-                width: 600,
+                width: 1150,
                 height: 400,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
                     color: '#ffffff'
+                },
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
                 },
                 hAxis: {
                     textStyle: {
@@ -946,11 +1036,18 @@
                         color: '#ffffff'
                     }
                 },
-                bar: { groupWidth: "75%" },
-                legend: { position: "none" },
+                colors: ['#D66D32'],
+                bar: {
+                    groupWidth: "75%",
+                },
+                legend: {
+                    position: "none"
+                },
             };
+
             var chart = new google.visualization.BarChart(document.getElementById("barchartManaged"));
             chart.draw(view, options);
+
 
             // Bots
             // Grafica de columnas stacked
@@ -979,25 +1076,34 @@
                 height: 600,
                 isStacked: true,
                 titleTextStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 22
                 },
                 backgroundColor: 'transparent',
                 textStyle: {
-                    color: '#ffffff'
+                    color: '#ffffff',
+                    fontSize: 20
+                },
+                chartArea: {
+                    width: '80%',
+                    height: '80%'
                 },
                 hAxis: {
                     textStyle: {
-                        color: '#ffffff'
+                        color: '#ffffff',
+                        // fontSize: 20
                     }
                 },
                 vAxis: {
                     textStyle: {
-                        color: '#ffffff'
+                        color: '#ffffff',
+                        // fontSize: 20
                     }
                 },
                 legend: {
                     textStyle: {
-                        color: '#ffffff'
+                        color: '#ffffff',
+                        fontSize: 20
                     },
                     position: 'bottom'
                 },
