@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF</title>
+    <style>
+        /* Fuente de letra */
+
+        @font-face {
+            font-family: 'GothamP';
+            src: url('./Gotham/GothamBook.ttf') format('truetype');
+        }
+
+        @font-face {
+            font-family: 'GothamT';
+            src: url('./Gotham/Gotham-Black.otf') format('opentype');
+        }
+
+        h1 {
+            font-family: 'GothamT', Gotham-Black;
+            color: white;
+            font-size: 34px;
+        }
+
+        h2 {
+            font-family: 'GothamT', Gotham-Black;
+            color: white;
+            font-size: 21;
+        }
+
+        p {
+            font-family: 'GothamP', GothamBook;
+            font-size: 16px;
+            color: white;
+        }
+
+        /* Tamaños y colores de letra de los cuadritos */
+
+        .parrafoCantidad {
+            font-family: 'GothamP', GothamBook;
+            font-size: 34px;
+            line-height: 0.3;
+            color: white;
+        }
+
+        .parrafoTitulo {
+            font-family: 'GothamP', GothamBook;
+            font-size: 16px;
+            line-height: 0.3;
+            color: white;
+        }
+
+        /* Fondo del PDF */
+
+        .bosdy {
+            background-image: url('img/fondoPagina.jpg');
+            background-size: contain;
+            background-color: rgb(255, 255, 255);
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+
+        /* Portada */
+
+        .portada {
+            height: 1680px;
+            width: 1190px;
+            z-index: -1;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            right: 0;
+            left: 0;
+        }
+
+        /* Encabezado y pie de pagina */
+
+        .encabezado {
+            background-image: url('img/Encabezado.png');
+            height: 400px;
+            /* width: 1150px; */
+            background-size: 1200px;
+            background-repeat: no-repeat;
+            /* background-position: center center; */
+            position: fixed;
+            z-index: -2;
+            /* absolute para que solo aparezca en la primera pagina, fixed para que aparezca en todas, relative que se pegue al contenido y no queda bien ajustado a los lados, static lo mismo que relative, sticky solo funciona en la primer pagina y no queda ajustado a los lados */
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .pie {
+            background-image: url('img/Pie.png');
+            height: 100px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            position: fixed;
+            z-index: -2;
+            /* absolute para que solo aparezca en la primera pagina, fixed para que aparezca en todas, relative que se pegue al contenido y no queda bien ajustado a los lados, static lo mismo que relative, sticky solo funciona en la primer pagina y no queda ajustado a los lados */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: right;
+        }
+
+        /* Contendores de las graficas */
+
+        .chartContainer {
+            display: inline-flex;
+            /* background-color: rgba(255, 255, 255, 0.5); */
+        }
+
+        .chartContainer .chart {
+            width: 575px;
+            height: 400px;
+        }
+
+        /* Contenedor de los cuadritos y columnas*/
+
+        .contenedor {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .columna {
+            width: 45%;
+            /* border: solid #000000; */
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px;
+            text-align: center;
+            height: 190px;
+        }
+
+        .columna2 {
+            width: 100%;
+            /* border: solid #000000; */
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px;
+            text-align: center;
+            height: 190px;
+        }
+
+        /* Diseño de las tablas */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: linear-gradient(to left, #003583, #0079C6);
+        }
+
+        td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #1FBDF9;
+            font-family: 'GothamP', GothamBook;
+            font-size: 16px;
+            color: white;
+        }
+
+        th {
+            padding: 8px;
+            border: 1px solid #1FBDF9;
+            font-family: 'GothamT', Gotham-Black;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Salto de pagina */
+
+        .salto {
+            page-break-before: always;
+        }
+    </style>
+</head>
+
+<!-- encabezado -->
+<!-- <header class="encabezado">
+
+</header> -->
+
+<body class="bosdy">
+
+    <!-- PORTADA -->
+
+    <div>
+        <img src="./img/portada.jpg" alt="portada" class="portada">
+    </div>
+
+    <div> <br> </div>
+    <div class="salto"></div>
+
+    <br><br><br><br><br><br>
+
+    <!-- Parte del encabezado o inicio del reporte -->
+    <div>
+        <h1 style="font-size: 40px; text-align: center;">
+            SECURITY SUMARY CLOUDFLARE
+        </h1>
+        <!-- <h2><span id="fecha"></span></h2> -->
+    </div>
+
+    <br>
+
+    <!-- TRAFICO -->
+    <div>
+        <h1>
+            Tráfico del dominio
+        </h1>
+    </div>
+
+    <div>
+        <h2>
+            Resumen
+        </h2>
+
+        <br><br>
+
+        <div class="contenedor">
+            <div class="columna">
+                <img src="./img/traffic.png" alt="traffic" height="70px">
+                <p class="parrafoTitulo">Total</p>
+                <p class="parrafoCantidad">542.47M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloAzul.png" alt="cAzul" height="70px">
+                <p class="parrafoTitulo">bancamovil.banrural.com.gt</p>
+                <p class="parrafoCantidad">302.98M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloRojo.png" alt="cRojo" height="70px">
+                <p class="parrafoTitulo">bvnegocios.banrural.gt</p>
+                <p class="parrafoCantidad">235.43M</p>
+            </div>
+        </div><br>
+
+        <div class="contenedor">
+            <div class="columna">
+                <img src="./img/circuloAmarillo.png" alt="cAmarillo" height="70px">
+                <p class="parrafoTitulo">rrhh.banrural.com.gt</p>
+                <p class="parrafoCantidad">3.19M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloVerde.png" alt="cVerde" height="70px">
+                <p class="parrafoTitulo">apitc.banrural.com.gt</p>
+                <p class="parrafoCantidad">717.41k</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloMorado.png" alt="cMorado" height="70px">
+                <p class="parrafoTitulo">portaltc.banrural.com.gt</p>
+                <p class="parrafoCantidad">152.89k</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRAFICOS TRAFICO -->
+
+    <div id="curve_chart"></div>
+    <br>
+
+    <div class="salto"></div>
+
+    <br><br><br><br><br><br>
+    <!-- INSIGHTS -->
+
+    <h2>Perspectivas</h2>
+    <div class="chartContainer">
+        <div class="chart" id="barchartDevice"></div>
+        <div class="chart" id="barchartCodes"></div>
+    </div>
+
+    <div class="chartContainer">
+        <div class="chart" id="barchartSource"></div>
+        <div class="chart" id="barchartCache"></div>
+    </div>
+
+    <!-- EVENTOS DE SEGURIDAD -->
+    <div>
+        <h1>
+            Eventos de seguridad
+        </h1>
+    </div>
+    <div>
+        <h2>
+            Resumen
+        </h2>
+
+        <br>
+
+        <div class="contenedor">
+            <div class="columna">
+                <img src="./img/firewall.png" alt="firewall" height="70px">
+                <p class="parrafoTitulo">Total</p>
+                <p class="parrafoCantidad">1.19B</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloAzul.png" alt="cAzul" height="70px">
+                <p class="parrafoTitulo">Log</p>
+                <p class="parrafoCantidad">529.57M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloRojo.png" alt="cRojo" height="70px">
+                <p class="parrafoTitulo">Skip</p>
+                <p class="parrafoCantidad">438.98M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloAmarillo.png" alt="cAmarillo" height="70px">
+                <p class="parrafoTitulo">Allow</p>
+                <p class="parrafoCantidad">223.69M</p>
+            </div>
+        </div>
+        <br>
+
+        <div class="contenedor">
+            <div class="columna">
+                <img src="./img/circuloVerde.png" alt="cVerde" height="70px">
+                <p class="parrafoTitulo">Block</p>
+                <p class="parrafoCantidad">1.85M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloMorado.png" alt="cMorado" height="70px">
+                <p class="parrafoTitulo">Managed Challenge</p>
+                <p class="parrafoCantidad">297.14k</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloCeleste.png" alt="cCeleste" height="70px">
+                <p class="parrafoTitulo">Bypass</p>
+                <p class="parrafoCantidad">10.63k</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="salto"></div>
+
+    <br><br><br><br><br><br>
+
+    <!-- GRAFICOS SEGURIDAD -->
+
+    <div id="lineChartSecurity"></div>
+    <br>
+
+    <!-- EVENTOS DE SERVICIO -->
+
+    <div>
+        <h1>
+            Eventos de servicio
+        </h1>
+        <br>
+        <div class="contenedor">
+            <div class="columna">
+                <img src="./img/circuloAzul.png" alt="cAzul" height="70px">
+                <p class="parrafoTitulo">Firewall rules</p>
+                <p class="parrafoCantidad">753.59M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloRojo.png" alt="cRojo" height="70px">
+                <p class="parrafoTitulo">Managed rules</p>
+                <p class="parrafoCantidad">439.07M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloAmarillo.png" alt="cAmarillo" height="70px">
+                <p class="parrafoTitulo">Rate limiting rules</p>
+                <p class="parrafoCantidad">1.72M</p>
+            </div>
+        </div>
+
+        <div class="contenedor">
+            <div class="columna2">
+                <img src="./img/circuloVerde.png" alt="cVerde" height="70px">
+                <p class="parrafoTitulo">Security level</p>
+                <p class="parrafoCantidad">7.83k</p>
+            </div>
+            <div class="columna2">
+                <img src="./img/circuloMorado.png" alt="cMorado" height="70px">
+                <p class="parrafoTitulo">Validation</p>
+                <p class="parrafoCantidad">2.58k</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRAFICO EVENTOS POR SERVICIO -->
+
+
+    <div id="barchartStackEvents"></div>
+    <br>
+
+    <div class="salto"></div>
+
+    <br><br><br><br><br><br>
+
+    <!-- INSIGHTS -->
+
+    <h2>Perspectivas</h2>
+    <div class="chartContainer">
+        <div class="chart" id="barchartHosts"></div>
+        <div class="chart" id="barchartFirewall"></div>
+    </div>
+    <div class="chartContainer">
+        <div class="chart" id="barchartManaged"></div>
+    </div>
+
+    <!-- BOT MANAGEMENT -->
+
+    <br>
+
+    <div>
+        <h1>
+            Gestión de bots
+        </h1>
+    </div>
+    <div>
+        <h2>
+            Análisis de bots
+        </h2>
+        <div class="contenedor">
+            <div class="columna">
+                <img src="./img/robot.png" alt="bot" height="70px">
+                <p class="parrafoTitulo">Total</p>
+                <p class="parrafoCantidad">520.16M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloAzul.png" alt="cAzul" height="70px">
+                <p class="parrafoTitulo">Verified bot</p>
+                <p class="parrafoCantidad">4.22M</p>
+            </div>
+            <div class="columna">
+                <img src="./img/circuloRojo.png" alt="cRojo" height="70px">
+                <p class="parrafoTitulo">Automated</p>
+                <p class="parrafoCantidad">220.74k</p>
+            </div>
+        </div><br>
+
+        <div class="contenedor">
+            <div class="columna2">
+                <img src="./img/circuloAmarillo.png" alt="cAmarillo" height="70px">
+                <p class="parrafoTitulo">Likely Automated</p>
+                <p class="parrafoCantidad">470.83k</p>
+            </div>
+            <div class="columna2">
+                <img src="./img/circuloVerde.png" alt="cVerde" height="70px">
+                <p class="parrafoTitulo">Likely Human</p>
+                <p class="parrafoCantidad">525.25M</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="salto"></div>
+
+    <br><br><br><br><br><br>
+
+    <!-- GRAFICO DE BOT ANALYTICS -->
+
+    <div id="columnChartBot"></div>
+    <br>
+
+    <!-- scripts de graficos -->
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+        // Google charts 
+
+        google.charts.load("current", { packages: ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+        function drawChart() {
+            // Trafico
+            // Grafica de lineas
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'bancamovl', 'bvnegocios', 'rrhh', 'apitc', 'portaltc'],
+                ['Wed 03', 6500000, 7000000, 100000, 125000, 131000],
+                ['Fri 05', 11800000, 12200000, 125000, 131000, 134567],
+                ['Sun 07', 6000000, 2000000, 125000, 131000, 140000],
+                ['Tue 09', 10000000, 12000000, 123000, 145000, 31000],
+                ['Thu 11', 10000000, 6000000, 123000, 145000, 31000],
+                ['Sat 13', 8000000, 1000000, 123000, 145000, 31000],
+                ['Mon 15', 11000000, 6000000, 123000, 145000, 31000],
+                ['Wed 17', 9000000, 5000000, 123000, 145000, 31000],
+                ['Fri 19', 9500000, 4000000, 123000, 145000, 31000],
+                ['Sun 21', 6000000, 1000000, 123000, 145000, 31000],
+                ['Tue 23', 8300000, 5000000, 123000, 145000, 31000],
+                ['Thu 25', 10000000, 7000000, 123000, 145000, 31000],
+                ['Sat 27', 7000000, 2000000, 123000, 145000, 31000],
+                ['Mon 29', 16000000, 13000000, 123000, 145000, 31000],
+                ['Wed 31', 14000000, 14000000, 123000, 145000, 31000]
+            ]);
+
+            var options = {
+                title: 'Host',
+                width: 1150,
+                height: 600,
+                textStyle: {
+                    color: '#ffffff'
+                },
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                legend: {
+                    textStyle: {
+                        color: '#ffffff'
+                    },
+                    position: 'bottom'
+                },
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+            chart.draw(data, options);
+
+            // Insights de trafico en graficos de barras horizontales
+            // Source device types
+            var data = google.visualization.arrayToDataTable([
+                ["Device", "Traffic", { role: "style" }],
+                ["Mobile", 352000000, "#124D85"],
+                ["Desktop", 189600000, "#124D85"],
+                ["Tablet", 1090000, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Source device types",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartDevice"));
+            chart.draw(view, options);
+
+            // Edge status codes
+            var data = google.visualization.arrayToDataTable([
+                ["Status", "Traffic", { role: "style" }],
+                ["200 OK", 398040000, "#124D85"],
+                ["304 Not Modified", 130910000, "#124D85"],
+                ["204 No Content", 12310000, "#124D85"],
+                ["302 Found", 5360000, "#124D85"],
+                ["399 Client Closed Request", 2000000, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Edge status codes",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartCodes"));
+            chart.draw(view, options);
+
+            // Source IPs
+            var data = google.visualization.arrayToDataTable([
+                ["IPs", "Traffic", { role: "style" }],
+                ["13.89.246.91", 2540000, "#124D85"],
+                ["190.56.85.250", 2530000, "#124D85"],
+                ["190.111.2.18", 640200, "#124D85"],
+                ["45.5.117.93", 606890, "#124D85"],
+                ["205.211.224.234", 593420, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Source IPs",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartSource"));
+            chart.draw(view, options);
+
+            // Cache statuses
+            var data = google.visualization.arrayToDataTable([
+                ["Cache", "Traffic", { role: "style" }],
+                ["Dynamic", 522530000, "#124D85"],
+                ["None", 16970000, "#124D85"],
+                ["Hit", 1670000, "#124D85"],
+                ["Miss", 1480000, "#124D85"],
+                ["Expired", 21360, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Cache Stauses",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartCache"));
+            chart.draw(view, options);
+
+            // Seguridad
+            // Grafica de lineas firewall events
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Log', 'Skip', 'Allow', 'Block', 'Managed Challenge', 'Bypass'],
+                ['Wed 03', 6500000, 7000000, 100000, 125000, 131000, 13456],
+                ['Fri 05', 11800000, 12200000, 125000, 131000, 134567, 14566],
+                ['Sun 07', 6000000, 2000000, 125000, 131000, 140000, 12333],
+                ['Tue 09', 10000000, 12000000, 123000, 145000, 31000, 12455],
+                ['Thu 11', 10000000, 6000000, 123000, 145000, 31000, 30000],
+                ['Sat 13', 8000000, 1000000, 123000, 145000, 31000, 123456],
+                ['Mon 15', 11000000, 6000000, 123000, 145000, 31000, 87868],
+                ['Wed 17', 9000000, 5000000, 123000, 145000, 31000, 98765],
+                ['Fri 19', 9500000, 4000000, 123000, 145000, 31000, 56843],
+                ['Sun 21', 6000000, 1000000, 123000, 145000, 31000, 25379],
+                ['Tue 23', 8300000, 5000000, 123000, 145000, 31000, 64537],
+                ['Thu 25', 10000000, 7000000, 123000, 145000, 31000, 57892],
+                ['Sat 27', 7000000, 2000000, 123000, 145000, 31000, 284658],
+                ['Mon 29', 16000000, 13000000, 123000, 145000, 31000, 123456],
+                ['Wed 31', 14000000, 14000000, 123000, 145000, 31000, 654321]
+            ]);
+
+            var options = {
+                title: 'Firewall Events',
+                width: 1150,
+                height: 500,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                legend: {
+                    textStyle: {
+                        color: '#ffffff'
+                    },
+                    position: 'bottom'
+                },
+            };
+
+            var chart = new google.visualization.LineChart(document.getElementById('lineChartSecurity'));
+
+            chart.draw(data, options);
+
+            // Grafico eventos de servicio, grafico de barras apiladas
+
+            var data = google.visualization.arrayToDataTable([
+                ['Event', 'Firewall rules', 'Managed rules', 'Rate limiting rules', 'Security level', 'Validation'],
+                ['Event', 753590000, 439070000, 1720000, 7830, 2580]
+            ]);
+
+            var options = {
+                title: 'Events by service',
+                width: 1150,
+                height: 200,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                legend: {
+                    textStyle: {
+                        color: '#ffffff'
+                    },
+                    position: 'bottom'
+                },
+                isStacked: true,
+            };
+
+            var chart = new google.visualization.BarChart(document.getElementById('barchartStackEvents'));
+
+            chart.draw(data, options);
+
+            //Insights Seguridad, graficos de barras
+            // Hosts
+            var data = google.visualization.arrayToDataTable([
+                ["Hosts", "Alerts", { role: "style" }],
+                ["bvnegocios.banrural.com.gt", 882910000, "#124D85"],
+                ["bancamovil.banrural.com.gt", 304710000, "#124D85"],
+                ["rrhh.banrural.com.gt", 5290000, "#124D85"],
+                ["apitc.banrural.com.gt", 809010, "#124D85"],
+                ["portaltc.banrural.com.gt", 272710, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Host",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartHosts"));
+            chart.draw(view, options);
+
+            // Firewall rules
+            var data = google.visualization.arrayToDataTable([
+                ["Rules", "Alerts", { role: "style" }],
+                ["Log_BDR", 529570000, "#124D85"],
+                ["File_Load_BVNegocios_transfers", 217630000, "#124D85"],
+                ["Bot Verified", 4570000, "#124D85"],
+                ["Lista_Blanca_APP", 972100, "#124D85"],
+                ["Bot_30", 290310000, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Firewall rules",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartFirewall"));
+            chart.draw(view, options);
+
+            // Managed rules
+            var data = google.visualization.arrayToDataTable([
+                ["Rules", "Alerts", { role: "style" }],
+                ["corp_upload", 217600000, "#124D85"],
+                ["Corpo_upload_OWASP", 217600000, "#124D85"],
+                ["rrhh exception", 1970000, "#124D85"],
+                ["BancaSat", 1780000, "#124D85"],
+                ["949110: Inbound Anomaly Score Exceeded", 94590000, "#124D85"]
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1,
+                {
+                    calc: "stringify",
+                    sourceColumn: 1,
+                    type: "string",
+                    role: "annotation"
+                },
+                2]);
+
+            var options = {
+                title: "Managed rules",
+                width: 600,
+                height: 400,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                bar: { groupWidth: "75%" },
+                legend: { position: "none" },
+            };
+            var chart = new google.visualization.BarChart(document.getElementById("barchartManaged"));
+            chart.draw(view, options);
+
+            // Bots
+            // Grafica de columnas stacked
+            var data = google.visualization.arrayToDataTable([
+                ['Time', 'Verified bot', 'Automated', 'Likely Automated', 'Likely Human'],
+                ['Wed 03', 6500000, 7000000, 100000, 125000],
+                ['Fri 05', 11800000, 12200000, 125000, 131000],
+                ['Sun 07', 6000000, 2000000, 125000, 131000],
+                ['Tue 09', 10000000, 12000000, 123000, 145000],
+                ['Thu 11', 10000000, 6000000, 123000, 145000],
+                ['Sat 13', 8000000, 1000000, 123000, 145000],
+                ['Mon 15', 11000000, 6000000, 123000, 145000],
+                ['Wed 17', 9000000, 5000000, 123000, 145000],
+                ['Fri 19', 9500000, 4000000, 123000, 145000],
+                ['Sun 21', 6000000, 1000000, 123000, 145000],
+                ['Tue 23', 8300000, 5000000, 123000, 145000],
+                ['Thu 25', 10000000, 7000000, 123000, 145000],
+                ['Sat 27', 7000000, 2000000, 123000, 145000],
+                ['Mon 29', 16000000, 13000000, 123000, 145000],
+                ['Wed 31', 14000000, 14000000, 123000, 145000]
+            ]);
+
+            var options = {
+                title: 'Bot Analytics',
+                width: 1150,
+                height: 600,
+                isStacked: true,
+                titleTextStyle: {
+                    color: '#ffffff'
+                },
+                backgroundColor: 'transparent',
+                textStyle: {
+                    color: '#ffffff'
+                },
+                hAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                vAxis: {
+                    textStyle: {
+                        color: '#ffffff'
+                    }
+                },
+                legend: {
+                    textStyle: {
+                        color: '#ffffff'
+                    },
+                    position: 'bottom'
+                },
+            };
+
+            var chart = new google.visualization.ColumnChart(document.getElementById('columnChartBot'));
+
+            chart.draw(data, options);
+        }
+    </script>
+    <!-- Fin Scripts de graficos -->
+
+    <!-- script de fecha -->
+    <script>
+        // Obtener la fecha actual
+        var fechaActual = new Date();
+
+        // Obtener los componentes de la fecha
+        var dia = fechaActual.getDate();
+        var mes = fechaActual.getMonth() + 1;
+        var anio = fechaActual.getFullYear();
+
+        // Formatear la fecha como dd/mm/aaaa
+        var fechaFormateada = dia + '/' + mes + '/' + anio;
+
+        // Mostrar la fecha en el elemento HTML
+        document.getElementById('fecha').innerText = fechaFormateada;
+    </script>
+
+</body>
+<!-- FOOTER  -->
+<!-- <footer class="pie">
+
+</footer> -->
+
+</html>
