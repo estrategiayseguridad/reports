@@ -5,7 +5,7 @@ const hbs = require('handlebars');
 
 // Summary Malwarebytes
 
-exports.summaryMWB = (async function summaryMWB() {
+const summaryMWB = (async function () {
     try {
 
         // Codigo funcionando al 100
@@ -39,7 +39,7 @@ exports.summaryMWB = (async function summaryMWB() {
 
 // Buenas Practicas Malwarebytes ESP
 
-exports.practicas_MWB_ESP = (async function practicas_MWB_ESP() {
+const practicas_MWB_ESP = (async function() {
     try {
 
         // Codigo funcionando al 100
@@ -73,7 +73,7 @@ exports.practicas_MWB_ESP = (async function practicas_MWB_ESP() {
 
 // Buenas Practicas Malwarebytes ENG
 
-exports.practices_MWB_ENG = (async function practices_MWB_ENG() {
+const practices_MWB_ENG = (async function() {
     try {
 
         // Codigo funcionando al 100
@@ -107,7 +107,7 @@ exports.practices_MWB_ENG = (async function practices_MWB_ENG() {
 
 // Summary Cloudflare
 
-exports.summaryCloudflare = (async function summaryCloudflare() {
+const summaryCloudflare = (async function() {
     try {
 
         // Codigo funcionando al 100
@@ -117,7 +117,7 @@ exports.summaryCloudflare = (async function summaryCloudflare() {
         const page = await browser.newPage();
 
         // Cargar el archivo HTML local
-        await page.goto('file://C:/Usesrs/ottom/OneDrive/Documentos/Practica/Reportes/Cloudflare/PDF_Cloudflare/index.html', { waitUntil: 'networkidle0' });
+        await page.goto('file://C:/Users/ottom/OneDrive/Documentos/Practica/Reportes/Cloudflare/PDF_Cloudflare/index.html', { waitUntil: 'networkidle0' });
 
         // Esperar a que la imagen se cargue completamente (ajusta el selector según tu HTML)
         await page.waitForSelector('img');
@@ -138,5 +138,12 @@ exports.summaryCloudflare = (async function summaryCloudflare() {
         console.log(e)
     }
 })()
+
+module.exports = { 
+    summaryMWB,
+    practicas_MWB_ESP,
+    practices_MWB_ENG,
+    summaryCloudflare 
+};
 
 
