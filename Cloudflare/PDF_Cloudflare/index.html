@@ -22,13 +22,13 @@
         h1 {
             font-family: 'GothamT', Gotham-Black;
             color: white;
-            font-size: 34px;
+            font-size: 40px;
         }
 
         h2 {
             font-family: 'GothamT', Gotham-Black;
             color: white;
-            font-size: 21;
+            font-size: 30px;
         }
 
         p {
@@ -74,38 +74,6 @@
             top: 0;
             right: 0;
             left: 0;
-        }
-
-        /* Encabezado y pie de pagina */
-
-        .encabezado {
-            background-image: url('img/Encabezado.png');
-            height: 400px;
-            /* width: 1150px; */
-            background-size: 1200px;
-            background-repeat: no-repeat;
-            /* background-position: center center; */
-            position: fixed;
-            z-index: -2;
-            /* absolute para que solo aparezca en la primera pagina, fixed para que aparezca en todas, relative que se pegue al contenido y no queda bien ajustado a los lados, static lo mismo que relative, sticky solo funciona en la primer pagina y no queda ajustado a los lados */
-            top: 0;
-            left: 0;
-            right: 0;
-        }
-
-        .pie {
-            background-image: url('img/Pie.png');
-            height: 100px;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center center;
-            position: fixed;
-            z-index: -2;
-            /* absolute para que solo aparezca en la primera pagina, fixed para que aparezca en todas, relative que se pegue al contenido y no queda bien ajustado a los lados, static lo mismo que relative, sticky solo funciona en la primer pagina y no queda ajustado a los lados */
-            bottom: 0;
-            left: 0;
-            right: 0;
-            text-align: right;
         }
 
         /* Contendores de las graficas */
@@ -179,11 +147,6 @@
     </style>
 </head>
 
-<!-- encabezado -->
-<!-- <header class="encabezado">
-
-</header> -->
-
 <body class="bosdy">
 
     <!-- PORTADA -->
@@ -196,14 +159,6 @@
     <div class="salto"></div>
 
     <br><br><br><br>
-
-    <!-- Parte del encabezado o inicio del reporte -->
-    <div>
-        <h1 style="font-size: 40px; text-align: center;">
-            SECURITY SUMARY CLOUDFLARE
-        </h1>
-        <!-- <h2><span id="fecha"></span></h2> -->
-    </div>
 
     <br>
 
@@ -258,6 +213,8 @@
         </div>
     </div>
 
+    <br><br>
+
     <!-- GRAFICOS TRAFICO -->
 
     <div id="curve_chart"></div>
@@ -278,6 +235,8 @@
         <div class="chart" id="barchartSource"></div>
         <div class="chart" id="barchartCache"></div>
     </div>
+
+    <br><br>
 
     <!-- EVENTOS DE SEGURIDAD -->
     <div>
@@ -383,6 +342,8 @@
         </div>
     </div>
 
+    <br><br>
+
     <!-- GRAFICO EVENTOS POR SERVICIO -->
 
 
@@ -406,7 +367,7 @@
 
     <!-- BOT MANAGEMENT -->
 
-    <br>
+    <br><br><br><br>
 
     <div>
         <h1>
@@ -468,7 +429,6 @@
 
         google.charts.load("current", { packages: ['corechart'] });
         google.charts.setOnLoadCallback(drawChart);
-
 
         function drawChart() {
             // Trafico
@@ -1134,9 +1094,5 @@
     </script>
 
 </body>
-<!-- FOOTER  -->
-<!-- <footer class="pie">
-
-</footer> -->
 
 </html>
