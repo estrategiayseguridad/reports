@@ -1,13 +1,11 @@
 
 const puppeteer = require('puppeteer');
-const fs = require('fs-extra');
-const hbs = require('handlebars');
 
 // ESTRATEGIA Y SEGURIDAD
 
 // Summary Malwarebytes ES
 
-const summaryMWB_ES = (async function () {
+const summaryMWB_ES = async function () {
     try {
 
         // Codigo funcionando al 100
@@ -37,11 +35,11 @@ const summaryMWB_ES = (async function () {
     } catch (e) {
         console.log(e)
     }
-})()
+};
 
 // Buenas Practicas Malwarebytes ESP
 
-const practicas_MWB_ES_ESP = (async function() {
+const practicas_MWB_ES_ESP = async function() {
     try {
 
         // Codigo funcionando al 100
@@ -71,11 +69,11 @@ const practicas_MWB_ES_ESP = (async function() {
     } catch (e) {
         console.log(e)
     }
-})()
+};
 
 // Buenas Practicas Malwarebytes ENG
 
-const practices_MWB_ES_ENG = (async function() {
+const practices_MWB_ES_ENG = async function() {
     try {
 
         // Codigo funcionando al 100
@@ -105,11 +103,11 @@ const practices_MWB_ES_ENG = (async function() {
     } catch (e) {
         console.log(e)
     }
-})()
+};
 
 // Summary Cloudflare
 
-const summaryCloudflare_ES = (async function() {
+const summaryCloudflare_ES = async function() {
     try {
 
         // Codigo funcionando al 100
@@ -139,13 +137,13 @@ const summaryCloudflare_ES = (async function() {
     } catch (e) {
         console.log(e)
     }
-})()
+};
 
 // TOTAL SEKURE
 
 // Buenas Practicas Malwarebytes ENG TotalSekure
 
-const practices_MWB_TS_ENG = (async function() {
+const practices_MWB_TS_ENG = async function() {
     try {
 
         // Codigo funcionando al 100
@@ -175,9 +173,9 @@ const practices_MWB_TS_ENG = (async function() {
     } catch (e) {
         console.log(e)
     }
-})()
+};
 
-const summaryMWB_TS = (async function () {
+const summaryMWB_TS = async function () {
     try {
 
         // Codigo funcionando al 100
@@ -207,7 +205,7 @@ const summaryMWB_TS = (async function () {
     } catch (e) {
         console.log(e)
     }
-})()
+};
 
 module.exports = { 
     summaryMWB_ES,
