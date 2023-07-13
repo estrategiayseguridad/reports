@@ -78,13 +78,16 @@
 
         /* Contendores de las graficas */
 
+        .chartContenedor {
+            background: #123e5a80;
+        }
+
         .chartContainer {
             display: inline-flex;
-            /* background-color: rgba(255, 255, 255, 0.5); */
         }
 
         .chartContainer .chart {
-            width: 575px;
+            width: 550;
             height: 400px;
         }
 
@@ -217,7 +220,7 @@
 
     <!-- GRAFICOS TRAFICO -->
 
-    <div id="curve_chart"></div>
+    <div id="curve_chart" class="chartContenedor"></div>
     <br>
 
     <div class="salto"></div>
@@ -226,12 +229,12 @@
     <!-- INSIGHTS -->
 
     <h2>Perspectivas</h2>
-    <div class="chartContainer">
+    <div class="chartContainer" style="background: #123e5a80;">
         <div class="chart" id="barchartDevice"></div>
         <div class="chart" id="barchartCodes"></div>
     </div>
 
-    <div class="chartContainer">
+    <div class="chartContainer" style="background: #123e5a80;">
         <div class="chart" id="barchartSource"></div>
         <div class="chart" id="barchartCache"></div>
     </div>
@@ -300,7 +303,7 @@
 
     <!-- GRAFICOS SEGURIDAD -->
 
-    <div id="lineChartSecurity"></div>
+    <div id="lineChartSecurity" class="chartContenedor"></div>
     <br>
 
     <!-- EVENTOS DE SERVICIO -->
@@ -347,7 +350,7 @@
     <!-- GRAFICO EVENTOS POR SERVICIO -->
 
 
-    <div id="barchartStackEvents"></div>
+    <div id="barchartStackEvents" class="chartContenedor"></div>
     <br>
 
     <div class="salto"></div>
@@ -357,11 +360,11 @@
     <!-- INSIGHTS -->
 
     <h2>Perspectivas</h2>
-    <div class="chartContainer">
+    <div class="chartContainer" style="background: #123e5a80;">
         <div class="chart" id="barchartHosts"></div>
         <div class="chart" id="barchartFirewall"></div>
     </div>
-    <div class="chartContainer">
+    <div style="background: #123e5a80">
         <div class="chart" id="barchartManaged"></div>
     </div>
 
@@ -416,7 +419,7 @@
 
     <!-- GRAFICO DE BOT ANALYTICS -->
 
-    <div id="columnChartBot"></div>
+    <div id="columnChartBot" class="chartContenedor"></div>
     <br>
 
     <!-- scripts de graficos -->
@@ -488,6 +491,11 @@
                     },
                     position: 'bottom'
                 },
+                series: {
+                    0: { // Configuración de la primera serie (línea)
+                        color: '#00B7FF'
+                    },
+                }
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
@@ -515,7 +523,7 @@
 
             var options = {
                 title: "Source device types",
-                width: 600,
+                width: 550,
                 height: 400,
                 titleTextStyle: {
                     color: '#ffffff',
@@ -574,7 +582,7 @@
 
             var options = {
                 title: "Edge status codes",
-                width: 600,
+                width: 550,
                 height: 400,
                 titleTextStyle: {
                     color: '#ffffff',
@@ -633,7 +641,7 @@
 
             var options = {
                 title: "Source IPs",
-                width: 600,
+                width: 550,
                 height: 400,
                 titleTextStyle: {
                     color: '#ffffff',
@@ -692,7 +700,7 @@
 
             var options = {
                 title: "Cache Stauses",
-                width: 600,
+                width: 550,
                 height: 400,
                 titleTextStyle: {
                     color: '#ffffff',
@@ -779,6 +787,11 @@
                     },
                     position: 'bottom'
                 },
+                series: {
+                    0: { // Configuración de la primera serie (línea)
+                        color: '#00B7FF'
+                    },
+                }
             };
 
             var chart = new google.visualization.LineChart(document.getElementById('lineChartSecurity'));
@@ -855,7 +868,7 @@
 
             var options = {
                 title: "Host",
-                width: 600,
+                width: 550,
                 height: 400,
                 titleTextStyle: {
                     color: '#ffffff',
@@ -913,7 +926,7 @@
 
             var options = {
                 title: "Firewall rules",
-                width: 600,
+                width: 550,
                 height: 400,
                 titleTextStyle: {
                     color: '#ffffff',

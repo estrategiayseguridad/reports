@@ -1,4 +1,4 @@
-
+const inquirer = require('inquirer');
 const puppeteer = require('puppeteer');
 
 // ESTRATEGIA Y SEGURIDAD
@@ -39,7 +39,7 @@ const summaryMWB_ES = async function () {
 
 // Buenas Practicas Malwarebytes ESP
 
-const practicas_MWB_ES_ESP = async function() {
+const practicas_MWB_ES_ESP = async function () {
     try {
 
         // Codigo funcionando al 100
@@ -73,7 +73,7 @@ const practicas_MWB_ES_ESP = async function() {
 
 // Buenas Practicas Malwarebytes ENG
 
-const practices_MWB_ES_ENG = async function() {
+const practices_MWB_ES_ENG = async function () {
     try {
 
         // Codigo funcionando al 100
@@ -107,7 +107,7 @@ const practices_MWB_ES_ENG = async function() {
 
 // Summary Cloudflare
 
-const summaryCloudflare_ES = async function() {
+const summaryCloudflare_ES = async function () {
     try {
 
         // Codigo funcionando al 100
@@ -143,7 +143,7 @@ const summaryCloudflare_ES = async function() {
 
 // Buenas Practicas Malwarebytes ENG TotalSekure
 
-const practices_MWB_TS_ENG = async function() {
+const practices_MWB_TS_ENG = async function () {
     try {
 
         // Codigo funcionando al 100
@@ -207,13 +207,48 @@ const summaryMWB_TS = async function () {
     }
 };
 
-module.exports = { 
-    summaryMWB_ES,
-    practicas_MWB_ES_ESP,
-    practices_MWB_ES_ENG,
-    summaryCloudflare_ES,
-    summaryMWB_TS,
-    practices_MWB_TS_ENG,
+const menu = async function () {
+    const options = [
+        { name: 'Summary MWB ES', value: 1 },
+        { name: 'Practicas MWB ES ESP', value: 2 },
+        { name: 'Practices MWB ES ENG', value: 3 },
+        { name: 'Summary Cloudflare ES', value: 4 },
+        { name: 'Summary MWB TS', value: 5 },
+        { name: 'Practices MWB TS ENG', value: 6 },
+    ];
+
+    const question = {
+        type: 'list',
+        name: 'option',
+        message: 'Select an option:',
+        choices: options,
+    };
+
+    const answer = await inquirer.prompt(question);
+    const selectedOption = answer.option;
+
+    switch (selectedOption) {
+        case 1:
+            await summaryMWB_ES();
+            break;
+        case 2:
+            await practicas_MWB_ES_ESP();
+            break;
+        case 3:
+            await practices_MWB_ES_ENG();
+            break;
+        case 4:
+            await summaryCloudflare_ES();
+            break;
+        case 5:
+            await summaryMWB_TS();
+            break;
+        case 6:
+            await practices_MWB_TS_ENG();
+            break;
+        default:
+            console.log('Invalid option');
+    }
 };
 
-
+menu();
