@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const puppeteer = require('puppeteer');
+const { PDFDocument, rgb } = require('pdf-lib');
 
 // ESTRATEGIA Y SEGURIDAD
 
@@ -144,6 +145,7 @@ const summaryCloudflare_ES = async function () {
 // Buenas Practicas Malwarebytes ENG TotalSekure
 
 const practices_MWB_TS_ENG = async function () {
+   
     try {
 
         // Codigo funcionando al 100
