@@ -155,16 +155,16 @@ const practices_MWB_TS_ENG = async function () {
         const page = await browser.newPage();
 
         // Cargar el archivo HTML local
-        await page.goto('file://C:/Users/ottom/OneDrive/Documentos/Practica/Reportes/Malwarebytes/Practices_TS_ENG/index.html', { waitUntil: 'networkidle0' });
-        // await page.goto('file://C:/Users/dixon/reports/Malwarebytes/Practices_TS_ENG/index.html', { waitUntil: 'networkidle0' });
+        //await page.goto('file://C:/Users/ottom/OneDrive/Documentos/Practica/Reportes/Malwarebytes/Practices_TS_ENG/index.html', { waitUntil: 'networkidle0' });
+        await page.goto('file://C:/Users/dixon/reports/Malwarebytes/Practices_TS_ENG/index.html', { waitUntil: 'networkidle0' });
 
         // Esperar a que la imagen se cargue completamente (ajusta el selector según tu HTML)
         await page.waitForSelector('img');
 
         // Generar un archivo PDF con la imagen visible
         await page.pdf({
-            path: 'C:/Users/ottom/OneDrive/Documentos/Practica/Reportes/Malwarebytes/Practices_TS_ENG/Practices_Malwarebytes.pdf',
-            // path: 'C:/Users/dixon/reports/Malwarebytes/Practices_TS_ENG/Practices_Malwarebytes.pdf',
+            //path: 'C:/Users/ottom/OneDrive/Documentos/Practica/Reportes/Malwarebytes/Practices_TS_ENG/Practices_Malwarebytes.pdf',
+            path: 'C:/Users/dixon/reports/Malwarebytes/Practices_TS_ENG/Practices_Malwarebytes.pdf',
             format: 'a4',
             printBackground: true,
         });
